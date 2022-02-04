@@ -21,10 +21,12 @@ class DepartmentServiceTest {
 	@MockBean
 	DepartmentRepository departmentRepository;
 	
+	private Department department;
+	
 	@BeforeEach
 	void setUp() {
 		
-		Department department = new Department();
+		department = new Department();
 		department.setDepartmentAddress("Bangalore");
 		department.setDepartmentCode("IT-001");
 		department.setDepartmentName("IT");
@@ -37,5 +39,18 @@ class DepartmentServiceTest {
 		Department dept = departmentService.getDepartmentByName(departmentName);
 		assertEquals(departmentName, dept.getDepartmentName());
 	}
+	
+	@Test
+	public void testSaveDepartment() {
+		Department deptDb = new Department();
+		deptDb.setDepartmentAddress("Bangalore");
+		deptDb.setDepartmentCode("IT-001");
+		deptDb.setDepartmentName("IT");
+		deptDb.setDepartmentId(1l);
+		Mockito.when(departmentService.saveDepartment(department)).thenReturn(deptDb);
+		assertEquals(deptDb.getDepartmentAddress(), department.getDepartmentAddress());
+	}
+	
+	
 
 }
