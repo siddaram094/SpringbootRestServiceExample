@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -55,7 +54,8 @@ class DepartmentServiceTest {
 		deptDb.setDepartmentCode("IT-001");
 		deptDb.setDepartmentName("IT");
 		deptDb.setDepartmentId(1l);
-		Mockito.when(departmentService.saveDepartment(department)).thenReturn(deptDb);
+		Mockito.when(departmentRepository.save(department)).thenReturn(deptDb);
+		Department departmentFromSerive = departmentService.saveDepartment(department);
 		assertEquals(deptDb.getDepartmentAddress(), department.getDepartmentAddress());
 	}
 	
@@ -178,25 +178,16 @@ class DepartmentServiceTest {
 		updatedDepartmentToUpdate.setDepartmentName("IT");
 		updatedDepartmentToUpdate.setDepartmentId(0l);
 		
-		//Mockito.when(departmentRepository.save(department)).thenReturn(savedDepartment);
-		
 		Optional<Department> optDept = Optional.of(savedDepartment);
 		Mockito.when(departmentRepository.findById(0l)).thenReturn(optDept);
 		department.setDepartmentAddress("Hyderabad");
 		savedDepartment.setDepartmentAddress("Hyderabad"); 
-		System.out.println("saved dept"+department);
-		
-		System.out.println("savedDepartment"+savedDepartment);
 		 
-		System.out.println("updatedDepartmentToUpdate"+updatedDepartmentToUpdate);
 		Mockito.when(departmentRepository.save(department)).thenReturn(updatedDepartmentToUpdate);
 		
 		Department savedDepartment1 = departmentService.updateDepartmentById(0l, department);
 		
-		System.out.println("updatedDepartment"+savedDepartment1);
 		assertEquals(savedDepartment1.getDepartmentName(), savedDepartment.getDepartmentName());
-		//Mockito.verify(departmentRepository,times(1)).save(department);
-		
 	}
 
 }
