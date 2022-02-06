@@ -32,12 +32,6 @@ public class DepartmentController {
 	@Autowired
 	DepartmentService departmentService;
 	
-	
-	@GetMapping("/")
-	public String displayWelcomeMessage() {
-		return welcomeMessage;
-	}
-	
 	@PostMapping("/saveDepartment")
 	public Department saveDepartment(@Valid @RequestBody Department department) {
 		logger.info("Department to be saved"+department);
@@ -70,8 +64,7 @@ public class DepartmentController {
 	}
 	
 	@PutMapping("updateDepartment/{departmentId}")
-	public Department updateDepartmentVyId(@PathVariable("departmentId") Long departmentId,@RequestBody Department department) {
-		
+	public Department updateDepartmentById(@PathVariable("departmentId") Long departmentId,@RequestBody Department department) {
 		return departmentService.updateDepartmentById(departmentId,department);
 		 
 	}
