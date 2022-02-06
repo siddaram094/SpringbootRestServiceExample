@@ -132,5 +132,18 @@ class DepartmentControllerTest {
 				"    }"))
 		.andExpect(status().isOk());
 	}
+	
+	@Test
+	public void testGetDepartmentByName() throws Exception {
+		Department Dept = new Department(); 
+		Dept.setDepartmentAddress("Hyderabad");
+		Dept.setDepartmentCode("IT-001");
+		Dept.setDepartmentName("Engineering");
+		Dept.setDepartmentId(1l);
+		
+		Mockito.when(departmentService.getDepartmentByName("Engineering")).thenReturn(department);
+		mockMvc.perform(get("/department/getDepartments/Engineering").contentType(MediaType.APPLICATION_JSON))
+		.andExpect(status().isOk());
+	}
 
 }
