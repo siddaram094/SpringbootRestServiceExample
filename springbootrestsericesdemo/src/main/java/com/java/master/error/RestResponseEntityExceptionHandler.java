@@ -1,5 +1,7 @@
 package com.java.master.error;
 
+import java.util.Date;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -14,7 +16,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
 
 	@ExceptionHandler(DepartmentNotFoundException.class)
 	public ResponseEntity<Object> departmentNotFoundException(DepartmentNotFoundException exception,WebRequest request) {
-		ErrorMessage error = new ErrorMessage(HttpStatus.NOT_FOUND, exception.getMessage());
+		ErrorMessage error = new ErrorMessage(new Date(), exception.getMessage());
 		return new ResponseEntity<Object>(error,HttpStatus.NOT_FOUND);
 		
 	}

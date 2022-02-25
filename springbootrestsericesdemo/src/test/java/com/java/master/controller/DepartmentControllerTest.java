@@ -36,7 +36,7 @@ class DepartmentControllerTest {
 		department.setDepartmentAddress("Hyderabad");
 		department.setDepartmentCode("IT-001");
 		department.setDepartmentName("Engineering");
-		department.setDepartmentId(1l); 
+		department.setId(1l); 
 	}
 
 	@Test
@@ -74,13 +74,13 @@ class DepartmentControllerTest {
 		Dept1.setDepartmentAddress("Hyderabad");
 		Dept1.setDepartmentCode("IT-001");
 		Dept1.setDepartmentName("Engineering");
-		Dept1.setDepartmentId(1l);
+		Dept1.setId(1l);
 		
 		Department Dept2 = new Department();
 		Dept2.setDepartmentAddress("Bangalore");
 		Dept2.setDepartmentCode("IT-002");
 		Dept2.setDepartmentName("IT");
-		Dept2.setDepartmentId(2l);
+		Dept2.setId(2l);
 		
 		List<Department> listDepartment = new ArrayList<Department>();
 		listDepartment.add(Dept1);
@@ -97,7 +97,7 @@ class DepartmentControllerTest {
 		Dept1.setDepartmentAddress("Hyderabad");
 		Dept1.setDepartmentCode("IT-001");
 		Dept1.setDepartmentName("Engineering");
-		Dept1.setDepartmentId(1l);
+		Dept1.setId(1l);
 		
 		Department inputDept = new Department();
 		inputDept.setDepartmentAddress("Hyderabad");
@@ -121,7 +121,7 @@ class DepartmentControllerTest {
 		Dept2.setDepartmentAddress("Hyderabad");
 		Dept2.setDepartmentCode("IT-001");
 		Dept2.setDepartmentName("Engineering");
-		Dept2.setDepartmentId(1l);
+		Dept2.setId(1l);
 		
 		Mockito.when(departmentService.updateDepartmentById((long) 1, Dept1)).thenReturn(Dept2);
 		mockMvc.perform(put("/department/updateDepartment/1").contentType(MediaType.APPLICATION_JSON).content("{\r\n" + 
@@ -139,7 +139,7 @@ class DepartmentControllerTest {
 		Dept.setDepartmentAddress("Hyderabad");
 		Dept.setDepartmentCode("IT-001");
 		Dept.setDepartmentName("Engineering");
-		Dept.setDepartmentId(1l);
+		Dept.setId(1l);
 		
 		Mockito.when(departmentService.getDepartmentByName("Engineering")).thenReturn(department);
 		mockMvc.perform(get("/department/getDepartments/Engineering").contentType(MediaType.APPLICATION_JSON))

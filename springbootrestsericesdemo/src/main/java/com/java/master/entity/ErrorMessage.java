@@ -1,5 +1,7 @@
 package com.java.master.entity;
 
+import java.util.Date;
+
 import org.springframework.http.HttpStatus;
 
 import lombok.AllArgsConstructor;
@@ -12,6 +14,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ErrorMessage {
 
-	private HttpStatus status;
+	Date date;
 	private String message;
 }

@@ -53,7 +53,7 @@ class DepartmentServiceTest {
 		deptDb.setDepartmentAddress("Bangalore");
 		deptDb.setDepartmentCode("IT-001");
 		deptDb.setDepartmentName("IT");
-		deptDb.setDepartmentId(1l);
+		deptDb.setId(1l);
 		Mockito.when(departmentRepository.save(department)).thenReturn(deptDb);
 		Department departmentFromSerive = departmentService.saveDepartment(department);
 		assertEquals(deptDb.getDepartmentAddress(), department.getDepartmentAddress());
@@ -66,13 +66,13 @@ class DepartmentServiceTest {
 		department.setDepartmentAddress("Bangalore");
 		department.setDepartmentCode("IT-001"); 
 		department.setDepartmentName("IT");
-		department.setDepartmentId(1l);
+		department.setId(1l);
 		
 		Department deptDb = new Department();
 		deptDb.setDepartmentAddress("Bangalore");
 		deptDb.setDepartmentCode("IT-001");
 		deptDb.setDepartmentName("IT");
-		deptDb.setDepartmentId(1l);
+		deptDb.setId(1l);
 		
 		Optional<Department> optDept = Optional.of(department);
 		Mockito.when(departmentRepository.findById(1l)).thenReturn(optDept);
@@ -107,13 +107,13 @@ class DepartmentServiceTest {
 		department1.setDepartmentAddress("Bangalore");
 		department1.setDepartmentCode("IT-001");
 		department1.setDepartmentName("IT");
-		department1.setDepartmentId(1l);
+		department1.setId(1l);
 		
 		Department department2 = new Department();
 		department2.setDepartmentAddress("Bangalore");
 		department2.setDepartmentCode("IT-002");
 		department2.setDepartmentName("IS");
-		department2.setDepartmentId(2l); 
+		department2.setId(2l); 
 		
 		List<Department> departmentList = new ArrayList<Department>();
 		departmentList.add(department1);
@@ -134,7 +134,7 @@ class DepartmentServiceTest {
 		department.setDepartmentAddress("Bangalore");
 		department.setDepartmentCode("IT-001");
 		department.setDepartmentName("IT");
-		department.setDepartmentId(1l);
+		department.setId(1l);
 		
 		Mockito.when(departmentRepository.existsById(1l)).thenReturn(true);
 		
@@ -150,7 +150,7 @@ class DepartmentServiceTest {
 		department.setDepartmentAddress("Bangalore");
 		department.setDepartmentCode("IT-001");
 		department.setDepartmentName("IT");
-		department.setDepartmentId(1l);
+		department.setId(1l);
 		
 		Mockito.when(departmentRepository.existsById(1l)).thenReturn(false);
 		
@@ -170,13 +170,13 @@ class DepartmentServiceTest {
 		savedDepartment.setDepartmentAddress("Bangalore");
 		savedDepartment.setDepartmentCode("IT-001");
 		savedDepartment.setDepartmentName("IT");
-		savedDepartment.setDepartmentId(0l);
+		savedDepartment.setId(0l);
 		
 		Department updatedDepartmentToUpdate = new Department();
 		updatedDepartmentToUpdate.setDepartmentAddress("Hyderabad");
 		updatedDepartmentToUpdate.setDepartmentCode("IT-001");
 		updatedDepartmentToUpdate.setDepartmentName("IT");
-		updatedDepartmentToUpdate.setDepartmentId(0l);
+		updatedDepartmentToUpdate.setId(0l);
 		
 		Optional<Department> optDept = Optional.of(savedDepartment);
 		Mockito.when(departmentRepository.findById(0l)).thenReturn(optDept);
